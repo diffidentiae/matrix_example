@@ -50,7 +50,7 @@ std::size_t matrix_t::collumns() const
 matrix_t matrix_t::operator +( matrix_t const & other ) const
 {
 	matrix_t result(rows_, collumns_);
-		if ((rows_ == other.rows_ && columns_ == other.collumns_)) {
+		if ((rows_ == other.rows_ && collumns_ == other.collumns_)) {
 			result.elements_ = new int [rows_];
 			for (unsigned int i = 0; i < rows_; ++i) {
 				result.elements_[i] = new int[collumns_];
@@ -60,18 +60,16 @@ matrix_t matrix_t::operator +( matrix_t const & other ) const
 			}
 		}
 	else {
-			cout << "An error has occured while reading input data.\n";
+			std::cout << "An error has occured while reading input data.\n";
 			exit(0);
 		}
-	result.rows_ = rows_;
-        result.collumns_ = other.collumns_;
 	return result;
 }
 
 matrix_t matrix_t::operator -( matrix_t const & other ) const
 {
 	matrix_t result(rows_, collumns_);
-		if ((rows_ == other.rows_ && columns_ == other.collumns_)) {
+		if ((rows_ == other.rows_ && collumns_ == other.collumns_)) {
 			result.elements_ = new int [rows_];
 			for (unsigned int i = 0; i < rows_; ++i) {
 				result.elements_[i] = new int[collumns_];
@@ -81,18 +79,16 @@ matrix_t matrix_t::operator -( matrix_t const & other ) const
 			}
 		}
 	else {
-			cout << "An error has occured while reading input data.\n";
+			std::cout << "An error has occured while reading input data.\n";
 			exit(0);
-		}
-        result.rows_ = rows_;
-        result.collumns_ = other.collumns_;
+	}
 	return result;
 }
 
 matrix_t matrix_t::operator *( matrix_t const & other ) const
 {
 	if (collumns_ = other.rows_) {
-			matrix_t elements_(rows_, other.collumns_);
+			matrix_t result(rows_, other.collumns_);
 			result.elements_ = new int *[rows_];
 			for (unsigned int i = 0; i < rows_; ++i) {
 				result.elements_[i] = new int[collumns_];
@@ -102,12 +98,10 @@ matrix_t matrix_t::operator *( matrix_t const & other ) const
 						result.elements_[i][j] += (elements_[i][k] * other.elements_[k][j]);
 				}
 			}
-		        result.rows_ = rows_;
-                        result.collumns_ = other.collumns_; 
 			return result;
 		}
 		else {
-			cout << "An error has occured while reading input data.\n";
+			std::cout << "An error has occured while reading input data.\n";
 			exit(0);
 		}
 }
