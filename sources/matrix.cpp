@@ -51,7 +51,7 @@ matrix_t matrix_t::operator +( matrix_t const & other ) const
 {
 	matrix_t result;
 		if ((rows_ == other.rows_ && collumns_ == other.collumns_)) {
-			result.elements_ = new int [rows_];
+			int * result.elements_ = new int [rows_];
 			for (unsigned int i = 0; i < rows_; ++i) {
 				result.elements_[i] = new int[collumns_];
 				for (unsigned int j = 0; j < collumns_; ++j) {
@@ -70,7 +70,7 @@ matrix_t matrix_t::operator -( matrix_t const & other ) const
 {
 	matrix_t result;
 		if ((rows_ == other.rows_ && collumns_ == other.collumns_)) {
-			result.elements_ = new int [rows_];
+			int * result.elements_ = new int [rows_];
 			for (unsigned int i = 0; i < rows_; ++i) {
 				result.elements_[i] = new int[collumns_];
 				for (unsigned int j = 0; j < collumns_; ++j) {
@@ -87,7 +87,7 @@ matrix_t matrix_t::operator -( matrix_t const & other ) const
 
 matrix_t matrix_t::operator *( matrix_t const & other ) const
 {
-	if (collumns_ = other.rows_) {
+	if (collumns_ == other.rows_) {
 			matrix_t result;
 			result.elements_ = new int *[rows_];
 			for (unsigned int i = 0; i < rows_; ++i) {
@@ -132,7 +132,7 @@ std::istream & matrix_t::read( std::istream & stream )
     
     bool success = true;
     if( stream >> rows && stream >> symbol && symbol == ',' && stream >> collumns ) {
-        float ** elements = new float *[ rows ];
+        int ** elements = new int *[ rows ];
         for( std::size_t i = 0; success && i < rows; ++i ) {
             elements[ i ] = new float[ collumns ];
             for( std::size_t j = 0; j < collumns; ++j ) {
