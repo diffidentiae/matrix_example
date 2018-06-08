@@ -63,7 +63,7 @@ TEST_CASE("add matrix")
 	  
     std::ostringstream stream;
     (matrix_1 + matrix_2).write(stream);
-    REQUIRE(stream.str() == input )ж
+    REQUIRE(stream.str() == input );
 }
 TEST_CASE("operator -")
 
