@@ -61,9 +61,9 @@ TEST_CASE("add matrix")
     REQUIRE(matrix_2.rows() == 3);
     REQUIRE(matrix_2.collumns() == 3);
 	  
-    std::ostringstream оstream;
-    (matrix_1 + matrix_2).write(оstream);
-    REQUIRE(оstream.str() == input );
+    std::ostringstream ostream;
+    (matrix_1 + matrix_2).write(ostream);
+    REQUIRE(ostream.str() == input );
 }
 TEST_CASE("operator -")
 
