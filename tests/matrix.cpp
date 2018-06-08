@@ -35,9 +35,9 @@ TEST_CASE("add matrix")
     std::string input_1
     {
         "3, 3\n"
-        "1 1 1\n"
         "2 2 2\n"
-        "3 3 3" };
+        "2 2 2\n"
+        "2 2 2" };
     std::string input_2
     {
         "3, 3\n"
