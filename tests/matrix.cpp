@@ -135,7 +135,7 @@ TEST_CASE("operator *")
     std::istringstream istream2{ input_2 };
     REQUIRE( matrix_1.read( istream1 ) );
     REQUIRE( matrix_2.read( istream2 ) );
-    REQUIRE_NOTHROW(matrix_1*=matrix_2);
+    REQUIRE_NOTHROW(matrix_1=matrix_1*matrix_2);
 
     std::ostringstream ostream;
     matrix_1.write( ostream );
