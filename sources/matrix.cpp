@@ -95,7 +95,7 @@ matrix_t matrix_t::operator *( matrix_t const & other ) const
 				for (unsigned int j = 0; j < other.collumns_; ++j) {
 					result.elements_[i][j] = 0;
 					for (int k = 0; k < collumns_; k++)
-						result.elements_[i][j] += (elements_[i][k] * other.elements_[k][j]);
+						result.elements_[i][j] += elements_[i][k] * other.elements_[k][j];
 				}
 			}
 			return result;
