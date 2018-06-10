@@ -30,6 +30,8 @@ matrix_t & matrix_t::operator =( matrix_t const & other )
 			elements_[i][j] = other.elements_[i][j];
 		}
 	}
+		rows_ = other.rows_;
+		collumns_ = other.collumns_;
 	}
 	return *this;
 }
