@@ -19,12 +19,17 @@ matrix_t::matrix_t( matrix_t const & other )
 
 matrix_t & matrix_t::operator =( matrix_t const & other )
 {
+	if (this != &other) {
+		for (int i = 0; i < rows_; i++)
+			delete[] elements_[i];
+		delete[] elements_;
 	elements_ = new int *[rows_];
 	for (unsigned int i = 0; i < rows_; ++i) {
 		elements_[i] = new int[collumns_];
 		for (unsigned int j = 0; j < collumns_; ++j) {
 			elements_[i][j] = other.elements_[i][j];
 		}
+	}
 	}
 	return *this;
 }
@@ -95,7 +100,7 @@ matrix_t matrix_t::operator *( matrix_t const & other ) const
 				for (unsigned int j = 0; j < other.collumns_; ++j) {
 					result.elements_[i][j] = 0;
 					for (int k = 0; k < collumns_; k++)
-						result.elements_[i][j] += elements_[i][k] * other.elements_[k][j];
+						result.elements_[i][j] += (elements_[i][k] * other.elements_[k][j]);
 				}
 			}
 			return result;
