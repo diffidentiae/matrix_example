@@ -189,9 +189,9 @@ std::ostream & matrix_t::write( std::ostream & stream ) const
         stream << '\n';
         for( std::size_t j = 0; j < collumns_; ++j ) {
             stream << elements_[ i ][ j ];
-            if( j != rows_ - 1 || rows_ == 1 ) {
+	    if (rows_ == 1 && j != 1) stream << ' ';
+            if( j != rows_ - 1 ) {
                stream << ' ';
-   	       if (rows_ == 1) break;
             }
         }
     }
