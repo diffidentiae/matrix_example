@@ -66,6 +66,34 @@ TEST_CASE("add matrix")
     matrix_1.write(ostream);
     REQUIRE(ostream.str() == input );
 }
+
+TEST_CASE("add matrix2")
+{
+    std::string input_1
+    {
+        "1, 2\n"
+        "2 2" };
+    std::string input_2
+    {
+        "1, 2\n"
+        "2 2" };
+    std::string input{
+        "1, 2\n"
+        "4 4"};
+	
+	matrix_t matrix_1, matrix_2;
+	std::istringstream istream_1{ input_1 };
+	std::istringstream istream_2{ input_2 };
+    REQUIRE(matrix_1.read(istream_1));
+    REQUIRE(matrix_2.read(istream_2));
+    
+    matrix_1 = matrix_1 + matrix_2; 
+	    
+    std::ostringstream ostream;
+    matrix_1.write(ostream);
+    REQUIRE(ostream.str() == input );
+}
+
 TEST_CASE("operator -")
 
 {
