@@ -22,16 +22,20 @@ matrix_t & matrix_t::operator =( matrix_t const & other )
 	if (this != &other) {
 		rows_ = other.rows();
 		collumns_ = other.collumns();
+		
 		for (int i = 0; i < rows_; i++)
 			delete[] elements_[i];
+		
 		delete[] elements_;
-	elements_ = new int *[rows_];
-	for (unsigned int i = 0; i < rows_; ++i) {
-		elements_[i] = new int[collumns_];
-		for (unsigned int j = 0; j < collumns_; ++j) {
+		
+		elements_ = new int *[rows_];
+		for (int i = 0; i < rows_; ++i) {
+			elements_[i] = new int[collumns_];
+			
+		for (int j = 0; j < collumns_; ++j) {
 			elements_[i][j] = other.elements_[i][j];
+			}
 		}
-	}
 	}
 	return *this;
 }
@@ -145,7 +149,7 @@ std::istream & matrix_t::read( std::istream & stream )
     
     bool success = true;
     if( stream >> rows && stream >> symbol && symbol == ',' && stream >> collumns ) {
-        int ** elements = new int *[ rows ];
+    	int ** elements = new int *[ rows ];
         for( std::size_t i = 0; success && i < rows; ++i ) {
             elements[ i ] = new int[ collumns ];
             for( std::size_t j = 0; j < collumns; ++j ) {
