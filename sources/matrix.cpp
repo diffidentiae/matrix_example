@@ -20,6 +20,8 @@ matrix_t::matrix_t( matrix_t const & other )
 matrix_t & matrix_t::operator =( matrix_t const & other )
 {
 	if (this != &other) {
+		rows_ = other.rows_;
+		collumns_ = other.collumns_;
 		for (int i = 0; i < rows_; i++)
 			delete[] elements_[i];
 		delete[] elements_;
@@ -30,8 +32,6 @@ matrix_t & matrix_t::operator =( matrix_t const & other )
 			elements_[i][j] = other.elements_[i][j];
 		}
 	}
-		rows_ = other.rows_;
-		collumns_ = other.collumns_;
 	}
 	return *this;
 }
