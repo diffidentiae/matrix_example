@@ -6,8 +6,8 @@ matrix_t::matrix_t() : elements_{ nullptr }, rows_{ 0 }, collumns_{ 0 }
 
 matrix_t::matrix_t( matrix_t const & other )
 {       
-	rows_ = other.rows_;
-	collumns_ = other.collumns_;
+	rows_ = other.rows();
+	collumns_ = other.collumns();
 	elements_ = new int *[rows_];
 	for (unsigned int i = 0; i < rows_; ++i) {
 		elements_[i] = new int[collumns_];
@@ -20,8 +20,8 @@ matrix_t::matrix_t( matrix_t const & other )
 matrix_t & matrix_t::operator =( matrix_t const & other )
 {
 	if (this != &other) {
-		rows_ = other.rows_;
-		collumns_ = other.collumns_;
+		rows_ = other.rows();
+		collumns_ = other.collumns();
 		for (int i = 0; i < rows_; i++)
 			delete[] elements_[i];
 		delete[] elements_;
@@ -167,14 +167,8 @@ std::istream & matrix_t::read( std::istream & stream )
             delete [] elements;
         }
     }
-    else {
-        success = false;
-    }
-    
-    if( !success ) {
-        stream.setstate( std::ios_base::failbit );
-    }
-    
+    else stream.setstate( std::ios_base::failbit );
+	
 	return stream;
 }
 
